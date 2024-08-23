@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Packages\Domain\Search\Entity\Search;
-use Words;
+use Packages\Domain\Search\ValueObject\Words;
 
 class ShowOrdersRequest extends FormRequest
 {

@@ -1,5 +1,7 @@
 <?php
 
+namespace Packages\Domain\Search\ValueObject;
+
 use Packages\Exceptions\ValueException;
 
 class Word

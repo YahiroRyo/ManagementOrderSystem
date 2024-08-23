@@ -2,7 +2,7 @@
 
 namespace Packages\Service\Order;
 
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Packages\Domain\Search\Entity\Search;
 use Packages\Repository\Order\OrderRepositoryInterface;
 

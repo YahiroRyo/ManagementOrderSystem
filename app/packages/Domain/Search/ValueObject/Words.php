@@ -1,5 +1,7 @@
 <?php
 
+namespace Packages\Domain\Search\ValueObject;
+
 class Words
 {
     private array $value;
@@ -12,6 +14,16 @@ class Words
     public function getValue(): array
     {
         return $this->value;
+    }
+
+    public function isEmpty(): bool
+    {
+        return $this->value === [];
+    }
+
+    public function isExists(): bool
+    {
+        return !$this->isEmpty();
     }
 
     public static function createWithConversion(string $value): self

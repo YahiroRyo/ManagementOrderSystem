@@ -2,7 +2,7 @@
 
 namespace Packages\Domain\Search\Entity;
 
-use Words;
+use Packages\Domain\Search\ValueObject\Words;
 
 class Search
 {

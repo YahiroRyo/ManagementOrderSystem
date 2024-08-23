@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->uuid('id')->primary();
+
+            $table->string('name');
+            $table->string('phone_number');
+            $table->integer('sum_money');
+            $table->string('order_status');
+
+            $table->timestamp('ordered_at')->useCurrent();
+            $table->timestamp('updated_order_at')->useCurrent();
         });
     }
 

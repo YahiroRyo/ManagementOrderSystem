@@ -48,7 +48,7 @@ class OrderCommand extends Command
             Name::create($name),
             PhoneNumber::create($phoneNumber),
             SumMoney::create($sumMoney),
-            OrderStatus::DELIVERED,
+            OrderStatus::RECEIVED,
             OrderedAt::create(CarbonImmutable::now()),
             UpdatedOrderAt::create(CarbonImmutable::now()),
         );

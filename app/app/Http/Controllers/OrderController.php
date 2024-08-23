@@ -12,11 +12,21 @@ class OrderController extends Controller
     private ChangeOrderStatusService $changeOrderStatusService;
     private GetOrdersService $getOrdersService;
 
+    public function __construct(
+        ChangeOrderStatusService $changeOrderStatusService,
+        GetOrdersService $getOrdersService
+    ) {
+        $this->changeOrderStatusService = $changeOrderStatusService;
+        $this->getOrdersService         = $getOrdersService;
+    }
+
     public function showOrders(ShowOrdersRequest $request)
     {
         $searchEntity = $request->toDomain();
 
         $orders = $this->getOrdersService->execute($searchEntity);
+
+        return view('index', compact('orders'));
     }
 
     public function changeStatus(ChangeStatusRequest $changeStatusRequest)
@@ -24,5 +34,7 @@ class OrderController extends Controller
         $orderEntity = $changeStatusRequest->toDomain();
 
         $this->changeOrderStatusService->execute($orderEntity->getID(), $orderEntity->getOrderStatus());
+
+        return redirect(route('index'));
     }
 }

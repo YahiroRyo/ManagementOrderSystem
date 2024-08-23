@@ -20,4 +20,29 @@ enum OrderStatus: string
             self::CANCELED   => 'キャンセル済み',
         };
     }
+
+    public function isReceived(): bool
+    {
+        return $this === self::RECEIVED;
+    }
+
+    public function isDelivering(): bool
+    {
+        return $this === self::DELIVERING;
+    }
+
+    public function isDelivered(): bool
+    {
+        return $this === self::DELIVERED;
+    }
+
+    public function isCanceling(): bool
+    {
+        return $this === self::CANCELING;
+    }
+
+    public function isCanceled(): bool
+    {
+        return $this === self::CANCELED;
+    }
 }

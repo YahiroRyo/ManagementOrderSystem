@@ -26,10 +26,10 @@ class ID
 
     public static function create(string $value): self
     {
-        if (Str::isUuid($value)) {
-            return new self($value);
+        if (!Str::isUuid($value)) {
+            throw new ValueException('異常なIDです。');
         }
 
-        throw new ValueException('異常なIDです。');
+        return new self($value);
     }
 }

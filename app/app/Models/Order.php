@@ -19,13 +19,15 @@ class Order extends Model
 
     public const CREATED_AT = 'ordered_at';
     public const UPDATED_AT = 'updated_order_at';
+	public $incrementing  = false;
+	protected $keyType      = 'string';
 
     public $fillable = [
         'id',
         'name',
         'phone_number',
         'sum_money',
-        'status',
+        'order_status',
     ];
 
     public function toEntity(): OrderEntity
@@ -35,7 +37,7 @@ class Order extends Model
             Name::create($this->name),
             PhoneNumber::create($this->phone_number),
             SumMoney::create($this->sum_money),
-            OrderStatus::from($this->status),
+            OrderStatus::from($this->order_status),
             OrderedAt::createWithConversion($this->ordered_at),
             UpdatedOrderAt::createWithConversion($this->updated_order_at)
         );
@@ -48,7 +50,7 @@ class Order extends Model
             'name'         => $orderEntity->getName()->getValue(),
             'phone_number' => $orderEntity->getPhoneNumber()->getValue(),
             'sum_money'    => $orderEntity->getSumMoney()->getValue(),
-            'status'       => $orderEntity->getOrderStatus()->value,
+            'order_status' => $orderEntity->getOrderStatus()->value,
         ]);
     }
 }
