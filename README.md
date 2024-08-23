@@ -31,3 +31,34 @@
 - 注文作成
 - 注文キャンセル
 - ステータス変更
+
+# 初期設定
+#### Dockerを起動
+```
+docker compose up
+```
+#### .envファイルの作成
+```
+cp .env.example .env
+```
+#### パッケージのインストール
+```
+composer i
+```
+#### マイグレーション
+```
+php artisan migrate
+```
+
+# コマンド一覧
+#### 注文作成
+注文を作成するコマンドです。
+```
+php artisan app:create-order {name} {phoneNumber} {sumMoney}
+```
+
+#### 注文キャンセル
+注文をキャンセルするコマンドです。
+```
+php artisan app:cancel-order {id}
+```
