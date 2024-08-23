@@ -21,10 +21,15 @@ class Name
 
     public static function create(string $value): self
     {
-        if (strlen($value) > self::LENGTH) {
+        if (mb_strlen($value) > self::LENGTH) {
             throw new ValueException('異常な名前です。');
         }
 
         return new self($value);
+    }
+
+    public static function createEmpty(): self
+    {
+        return new self('');
     }
 }

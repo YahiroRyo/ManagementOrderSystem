@@ -19,6 +19,11 @@ class ID
         return $this->value;
     }
 
+    public static function generateRandomIDAndCreate(): self
+    {
+        return new self(Str::uuid());
+    }
+
     public static function create(string $value): self
     {
         if (Str::isUuid($value)) {

@@ -1,11 +1,10 @@
 <?php
 
-namespace Packages\Domain\Order\ValueObject;
-
 use Packages\Exceptions\ValueException;
 
-class PhoneNumber
+class Word
 {
+    private const LENGTH = 50;
     private string $value;
 
     private function __construct(string $value)
@@ -20,15 +19,10 @@ class PhoneNumber
 
     public static function create(string $value): self
     {
-        if (preg_match('/^[0-9]{10}+$/', $value)) {
+        if (mb_strlen($value) < self::LENGTH) {
             return new self($value);
         }
 
-        throw new ValueException('異常な電話番号です。');
-    }
-
-    public static function createEmpty(): self
-    {
-        return new self('');
+        throw new ValueException('異常な単語です。');
     }
 }

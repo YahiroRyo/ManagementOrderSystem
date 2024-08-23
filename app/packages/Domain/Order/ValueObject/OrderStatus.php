@@ -2,13 +2,13 @@
 
 namespace Packages\Domain\Order\ValueObject;
 
-enum OrderStatus
+enum OrderStatus: string
 {
-    case RECEIVED;
-    case DELIVERING;
-    case DELIVERED;
-    case CANCELING;
-    case CANCELED;
+    case RECEIVED = 'RECEIVED';
+    case DELIVERING = 'DELIVERING';
+    case DELIVERED = 'DELIVERED';
+    case CANCELING = 'CANCELING';
+    case CANCELED = 'CANCELED';
 
     public function toJa()
     {

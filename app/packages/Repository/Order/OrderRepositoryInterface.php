@@ -4,12 +4,14 @@ namespace Packages\Repository\Order;
 
 use Packages\Domain\Order\Entity\Order;
 use Illuminate\Database\Eloquent\Collection;
+use Packages\Domain\Order\ValueObject\ID;
+use Packages\Domain\Search\Entity\Search;
 
 interface OrderRepositoryInterface
 {
-    public function selectOrders(): Collection;
+    public function selectOrders(?Search $searchEntity): Collection;
 
-    public function selectOrder(): Collection;
+    public function selectOrder(ID $id): Order;
 
     public function createOrder(Order $order): Order;
 

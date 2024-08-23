@@ -30,4 +30,9 @@ class OrderedAt
 
         return new self($convertedValue);
     }
+
+    public static function create(CarbonImmutable $value): self
+    {
+        return new self($value);
+    }
 }

@@ -2,11 +2,10 @@
 
 namespace Packages\Service\Order;
 
-use Illuminate\Database\Eloquent\Collection;
-use Packages\Domain\Search\Entity\Search;
+use Packages\Domain\Order\Entity\Order;
 use Packages\Repository\Order\OrderRepositoryInterface;
 
-class GetOrdersService
+class CreateOrderService
 {
     private OrderRepositoryInterface $orderRepository;
 
@@ -15,8 +14,8 @@ class GetOrdersService
         $this->orderRepository = $orderRepository;
     }
 
-    public function execute(Search $searchEntity): Collection
+    public function execute(Order $orderEntity): Order
     {
-        return $this->orderRepository->selectOrders($searchEntity);
+        return $this->orderRepository->createOrder($orderEntity);
     }
 }

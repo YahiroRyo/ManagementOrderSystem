@@ -27,4 +27,9 @@ class SumMoney
 
         return new self($value);
     }
+
+    public static function createEmpty(): self
+    {
+        return new self(0);
+    }
 }

@@ -3,6 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Packages\Domain\Order\ValueObject\ID;
+use Packages\Repository\Order\OrderRepository;
+use Packages\Service\Order\CancelOrderService;
 
 class CancelOrderCommand extends Command
 {
@@ -11,20 +14,25 @@ class CancelOrderCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'app:cancel-order-command';
+    protected $signature = 'app:cancel-order {id}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Cancel order';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        //
+        $orderRepositroy = new OrderRepository();
+        $cancelOrderService = new CancelOrderService($orderRepositroy);
+
+        $id = $this->argument('id');
+
+        $cancelOrderService->execute(ID::create($id));
     }
 }

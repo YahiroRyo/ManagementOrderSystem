@@ -72,4 +72,24 @@ class Order
     {
         return $this->updatedOrderAt;
     }
+
+    public function setOrderStatus(OrderStatus $orderStatus): Order
+    {
+        $clonedOrder = clone $this;
+        $clonedOrder->orderStatus = $orderStatus;
+
+        return $clonedOrder;
+    }
+
+    public static function create(
+        ID $id,
+        Name $name,
+        PhoneNumber $phoneNumber,
+        SumMoney $sumMoney,
+        OrderStatus $orderStatus,
+        OrderedAt $orderedAt,
+        UpdatedOrderAt $updatedOrderAt
+    ) {
+        return new self($id, $name, $phoneNumber, $sumMoney, $orderStatus, $orderedAt, $updatedOrderAt);
+    }
 }
